@@ -1,0 +1,206 @@
+/* Palette: terracotta on warm paper; dark mode uses Material's slate with a warm hue. */
+:root {
+  --md-primary-fg-color: #9c4221;
+  --md-primary-fg-color--light: #b8552d;
+  --md-primary-fg-color--dark: #7a3218;
+  --md-accent-fg-color: #c2562f;
+  --md-accent-fg-color--transparent: #c2562f1a;
+  --recipe-rule: #0000001a;
+}
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #fcfaf6;
+}
+[data-md-color-scheme="slate"] {
+  --md-hue: 25;
+  --md-primary-fg-color: #7a3218;
+  --md-accent-fg-color: #e8865f;
+  --md-accent-fg-color--transparent: #e8865f1a;
+  --md-typeset-a-color: #e8865f;
+  --recipe-rule: #ffffff1f;
+}
+
+/* Title block */
+.md-typeset .recipe-meta {
+  margin-top: -0.8em;
+  color: var(--md-default-fg-color--light);
+}
+.recipe-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+}
+.recipe-tools button {
+  font: inherit;
+  font-size: 0.7rem;
+  padding: 0.3em 0.9em;
+  border: 1px solid var(--recipe-rule);
+  border-radius: 999px;
+  color: var(--md-default-fg-color);
+  cursor: pointer;
+}
+.recipe-tools button[aria-pressed="true"] {
+  background: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-bg-color);
+}
+.recipe-scale {
+  display: flex;
+}
+.recipe-tools .recipe-scale button {
+  border-radius: 0;
+  margin-left: -1px;
+}
+.recipe-tools .recipe-scale button:first-child {
+  border-radius: 999px 0 0 999px;
+}
+.recipe-tools .recipe-scale button:last-child {
+  border-radius: 0 999px 999px 0;
+}
+.recipe-tools .recipe-wake::before {
+  content: "☀ ";
+}
+
+/* Section headings */
+.md-typeset .recipe h2 {
+  margin: 1.6em 0 0.4em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--md-accent-fg-color);
+}
+.md-typeset .recipe h3 {
+  margin: 1.2em 0 0.3em;
+  font-size: 0.85rem;
+}
+
+/* Amounts */
+.amt {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Ingredient list */
+.md-typeset .recipe-ingredients ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media screen and (min-width: 60em) {
+  .md-typeset .recipe-ingredients ul {
+    columns: 2;
+    column-gap: 2rem;
+  }
+}
+/* Material indents list items with [dir=ltr] selectors, hence the extra ul. */
+.md-typeset .recipe-ingredients ul > li {
+  margin: 0;
+  break-inside: avoid;
+}
+.recipe-ingredients label {
+  display: grid;
+  grid-template-columns: 1.1rem 4.5rem 1fr;
+  gap: 0.6rem;
+  align-items: baseline;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--recipe-rule);
+  cursor: pointer;
+}
+/* Drop the amount column from lists where nothing has an amount. */
+.recipe-ingredients ul:not(:has(.q)) label {
+  grid-template-columns: 1.1rem 1fr;
+}
+.recipe-ingredients ul:not(:has(.q)) .amt,
+.step-ingredients:not(:has(.q)) .amt {
+  display: none;
+}
+.recipe-ingredients input {
+  accent-color: var(--md-accent-fg-color);
+}
+.recipe-ingredients label:has(input:checked) > span {
+  color: var(--md-default-fg-color--lighter);
+  text-decoration: line-through;
+}
+
+/* Method: number | the step's ingredients | instructions */
+.md-typeset ol.recipe-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.md-typeset ol.recipe-steps > li.recipe-step {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(8rem, 13rem) 1fr;
+  column-gap: 1.25rem;
+  margin: 0;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--recipe-rule);
+}
+.step-num {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1.5px solid var(--md-accent-fg-color);
+  border-radius: 50%;
+  color: var(--md-accent-fg-color);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.recipe-step.done .step-num {
+  background: var(--md-accent-fg-color);
+  color: var(--md-accent-bg-color);
+}
+.recipe-step.done .step-ingredients,
+.recipe-step.done .step-text {
+  opacity: 0.45;
+}
+.md-typeset ul.step-ingredients {
+  list-style: none;
+  margin: 0.2rem 0 0;
+  padding: 0;
+  font-size: 0.85em;
+}
+.md-typeset ul.step-ingredients li {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 0 0.15rem;
+}
+.step-ingredients .amt {
+  flex: 0 0 auto;
+  min-width: 3.2rem;
+}
+.md-typeset .step-text > :first-child {
+  margin-top: 0.15rem;
+}
+.md-typeset .step-text > :last-child {
+  margin-bottom: 0;
+}
+
+/* Phones: the step's ingredients sit above its instructions. */
+@media screen and (max-width: 44.9375em) {
+  .md-typeset ol.recipe-steps > li.recipe-step {
+    grid-template-columns: 1.75rem 1fr;
+    column-gap: 0.9rem;
+  }
+  .step-ingredients,
+  .step-text {
+    grid-column: 2;
+  }
+  .md-typeset ul.step-ingredients:not(:empty) {
+    margin-bottom: 0.5rem;
+  }
+  .md-typeset ul.step-ingredients:empty {
+    display: none;
+  }
+}
+
+@media print {
+  .recipe-tools {
+    display: none;
+  }
+  .recipe-ingredients input {
+    display: none;
+  }
+}

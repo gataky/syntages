@@ -1,0 +1,49 @@
+site_name: Syntages
+site_description: Recipes
+site_url: https://gataky.github.io/syntages/
+
+theme:
+  name: material
+  language: en
+  font:
+    text: Commissioner
+    code: Roboto Mono
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+extra_css:
+  - stylesheets/recipe.css
+
+extra_javascript:
+  - javascripts/recipe.js
+
+hooks:
+  - hooks/recipes.py
+
+plugins:
+  - search
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true

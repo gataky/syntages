@@ -1,0 +1,16 @@
+[project]
+name = "syntages"
+version = "0.1.0"
+description = "Personal recipe collection"
+requires-python = "==3.14.*"
+dependencies = [
+    # MkDocs 2.0 drops the plugin system Material relies on, so stay on 1.x
+    "mkdocs>=1.6.1,<2",
+    "mkdocs-material>=9.7.7,<10",
+]
+
+[tool.uv]
+# A site, not a Python package: just install the dependencies.
+package = false
+# Use the Python that asdf installs from .tool-versions (setup-python in CI); never download one.
+python-preference = "only-system"
