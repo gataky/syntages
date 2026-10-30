@@ -14,7 +14,8 @@ source: https://thebigmansworld.com/healthy-oatmeal-banana-bread/
     - 3 large eggs
     - 4 tbsp maple syrup (or honey or agave nectar)
     - 1 tsp baking soda
+    - 1 tbsp vanilla
 3. Fold in the chocolate chips, if using.
-    - 1 cup chocolate chips, optional
+    - 1/2 cup chocolate chips, optional
 4. Pour the batter into the pan and bake for 35–40 minutes, until a skewer comes out mostly clean.
 5. Let it cool completely before slicing.
